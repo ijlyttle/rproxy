@@ -19,9 +19,9 @@ envvar_proxy <- function() {
 
   # https://curl.se/libcurl/c/CURLOPT_PROXY.html
   proxy <-
-    Sys.getenv("http_proxy") %||%
-    Sys.getenv("HTTP_PROXY") %||%
-    Sys.getenv("https_proxy") %||%
+    Sys.getenv("http_proxy") %|.|%
+    Sys.getenv("HTTP_PROXY") %|.|%
+    Sys.getenv("https_proxy") %|.|%
     Sys.getenv("HTTPS_PROXY")
 
   proxy
@@ -34,7 +34,7 @@ envvar_no_proxy <- function() {
 
   # https://curl.se/libcurl/c/CURLOPT_NOPROXY.html
   no_proxy <-
-    Sys.getenv("no_proxy") %||%
+    Sys.getenv("no_proxy") %|.|%
     Sys.getenv("NO_PROXY")
 
   no_proxy
