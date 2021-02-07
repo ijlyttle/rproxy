@@ -1,5 +1,25 @@
-
-use_proxy <- function(url, no_proxy = envvar_no_proxy()) {
+#' Determine proxy
+#'
+#' @param url `character`
+#' @param proxy `character`
+#' @param no_proxy `character`
+#'
+#' @return \describe{
+#'   \item{`uses_proxy()`}{`logical` indicating if the proxy should be used.}
+#'   \item{`get_proxy()`}{`character` value of proxy to use.}
+#' }
+#' @examples
+#'   proxy <- "http://proxy.acme.com"
+#'   no_proxy <- "github.acme.com,localhost,127.0.0.1"
+#'
+#'   uses_proxy("https://github.com", no_proxy)      # TRUE
+#'   uses_proxy("https://github.acme.com", no_proxy) # FALSE
+#'
+#'   get_proxy("https://github.com", proxy, no_proxy) # "http://proxy.acme.com"
+#'   get_proxy("https://github.acme.com", proxy, no_proxy) # ""
+#' @export
+#'
+uses_proxy <- function(url, no_proxy = envvar_no_proxy()) {
 
   # assert that url and no_proxy are both character, length 1
   stopifnot(
@@ -26,8 +46,9 @@ use_proxy <- function(url, no_proxy = envvar_no_proxy()) {
   use_proxy
 }
 
-
-
+#' @rdname uses_proxy
+#' @export
+#'
 get_proxy <- function(url, proxy = envvar_proxy(),
                       no_proxy = envvar_no_proxy()) {
 
@@ -39,7 +60,7 @@ get_proxy <- function(url, proxy = envvar_proxy(),
       is.character(proxy) && identical(length(proxy), 1L)
   )
 
-  if (!use_proxy(url = url, no_proxy = no_proxy)) {
+  if (!uses_proxy(url = url, no_proxy = no_proxy)) {
     proxy <- ""
   }
 

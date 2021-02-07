@@ -12,41 +12,41 @@ no_proxy_ref <- paste(
 
 proxy_ref <- "http://proxy.acme.com"
 
-test_that("use_proxy() works", {
+test_that("uses_proxy() works", {
 
   # non-character arguments
   expect_error(
-    use_proxy(url = 1, no_proxy = "baz"),
+    uses_proxy(url = 1, no_proxy = "baz"),
     "`url` must be character and scalar"
   )
   expect_error(
-    use_proxy(url = "foo", no_proxy = 1),
+    uses_proxy(url = "foo", no_proxy = 1),
     "`no_proxy` must be character and scalar"
   )
 
   # non-scalar arguments
   expect_error(
-    use_proxy(url = c("foo", "bar"), no_proxy = "baz"),
+    uses_proxy(url = c("foo", "bar"), no_proxy = "baz"),
     "`url` must be character and scalar"
   )
   expect_error(
-    use_proxy(url = "foo", no_proxy = c("bar", "baz")),
+    uses_proxy(url = "foo", no_proxy = c("bar", "baz")),
     "`no_proxy` must be character and scalar"
   )
 
-  expect_use_proxy <- function(url, result, no_proxy = no_proxy_ref) {
-    use_proxy <- use_proxy(url, no_proxy = no_proxy)
-    expect_identical(use_proxy, result)
+  expect_uses_proxy <- function(url, result, no_proxy = no_proxy_ref) {
+    uses_proxy <- uses_proxy(url, no_proxy = no_proxy)
+    expect_identical(uses_proxy, result)
   }
 
-  expect_use_proxy("cnn.com", TRUE)
-  expect_use_proxy("192.168.1.1", FALSE)
-  expect_use_proxy("example.com", FALSE)
-  expect_use_proxy("bar.example.com", TRUE)
-  expect_use_proxy("bar.example1.com", FALSE)
-  expect_use_proxy("foo.example3.com", FALSE)
-  expect_use_proxy("foo.bar.example4.com", FALSE)
-  expect_use_proxy("localhost", FALSE)
+  expect_uses_proxy("cnn.com", TRUE)
+  expect_uses_proxy("192.168.1.1", FALSE)
+  expect_uses_proxy("example.com", FALSE)
+  expect_uses_proxy("bar.example.com", TRUE)
+  expect_uses_proxy("bar.example1.com", FALSE)
+  expect_uses_proxy("foo.example3.com", FALSE)
+  expect_uses_proxy("foo.bar.example4.com", FALSE)
+  expect_uses_proxy("localhost", FALSE)
 
 })
 

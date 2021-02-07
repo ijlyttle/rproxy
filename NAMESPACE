@@ -2,3 +2,5 @@
 
 export(envvar_no_proxy)
 export(envvar_proxy)
+export(get_proxy)
+export(uses_proxy)
