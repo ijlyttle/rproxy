@@ -4,11 +4,12 @@ test_that("envvar_proxy() works", {
   expect_identical(envvar_proxy(), "foo")
 
   withr::local_envvar(
+    # setting the last item of list because Windows is case-insensitive
     list(
       http_proxy = "",
       HTTP_PROXY = "",
-      https_proxy = "foo",
-      HTTPS_PROXY = ""
+      https_proxy = "",
+      HTTPS_PROXY = "foo"
     )
   )
   expect_identical(envvar_proxy(), "foo")
