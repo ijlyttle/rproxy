@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![CRAN status](https://www.r-pkg.org/badges/version/rproxy)](https://CRAN.R-project.org/package=rproxy)
+[![CRAN status](https://www.r-pkg.org/badges/version/rproxy)](https://CRAN.R-project.org/package=rproxy) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![R-CMD-check](https://github.com/ijlyttle/rproxy/workflows/R-CMD-check/badge.svg)](https://github.com/ijlyttle/rproxy/actions)
 
 <!-- badges: end -->
 
@@ -43,3 +43,7 @@ devtools::install_github("ijlyttle/rproxy")
 ## Example
 
 Nothing yet.
+
+## Code of Conduct
+
+Please note that the rproxy project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
