@@ -2,4 +2,3 @@
 
 export(envvar_no_proxy)
 export(envvar_proxy)
-importFrom(rlang,`%||%`)
