@@ -1,3 +1,14 @@
+test_that("envvar_proxy() works", {
+  withr::local_envvar(list_proxy("foo"))
+  expect_identical(envvar_proxy(), "foo")
+})
+
+test_that("envvar_no_proxy() works", {
+  withr::local_envvar(list_no_proxy("foo"))
+  expect_identical(envvar_no_proxy(), "foo")
+})
+
+
 test_that("list_proxy() works", {
   expect_identical(
     list_proxy("foo"),
