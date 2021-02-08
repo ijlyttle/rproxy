@@ -39,16 +39,18 @@
 #' @examples
 #' # sets your proxy variables to the right value for a given `url`
 #' local_proxy_for_url("https://github.acme.com")
+#' envvar_proxy()
+#' withr::deferred_clear() # reset state
 #'
 #' # same as above, but for enclosed code
 #' with_proxy_for_url(
 #'   "https://github.acme.com",
-#'   print("you will likely run more interesting code than this")
+#'   envvar_proxy()
 #' )
 #'
 #' # run with proxy off
 #' without_proxy(
-#'   print("anything else is more interesting than this.")
+#'   envvar_proxy()
 #' )
 #' @export
 #'
