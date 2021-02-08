@@ -3,4 +3,7 @@
 export(envvar_no_proxy)
 export(envvar_proxy)
 export(get_proxy)
+export(local_proxy_for_url)
 export(uses_proxy)
+export(with_proxy_for_url)
+export(without_proxy)
