@@ -45,7 +45,7 @@ with:
 devtools::install_github("ijlyttle/rproxy")
 ```
 
-## Example
+## Usage
 
 There are three sets of functions in this package.
 
