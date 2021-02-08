@@ -1,8 +1,18 @@
 #' Determine proxy
 #'
-#' @param url `character`
-#' @param proxy `character`
-#' @param no_proxy `character`
+#' Use these functions to determine if a `proxy` should be used for a given
+#' `url` and `no_proxy` string.
+#'
+#' This aims to emulate the
+#' [cURL specification](https://curl.se/libcurl/c/CURLOPT_NOPROXY.html)
+#' for `NO_PROXY`. The biggest difference between this implementation and the
+#' cURL specification is that the wildcard character (`*`) is used more
+#' permissably here.
+#'
+#' @param url `character` address for which to determine the proxy.
+#' @param proxy `character` the proxy that would be used.
+#' @param no_proxy `character` comma-separated string containing hostnames
+#'   where the proxy is not to be used.
 #'
 #' @return \describe{
 #'   \item{`uses_proxy()`}{`logical` indicating if the proxy should be used.}

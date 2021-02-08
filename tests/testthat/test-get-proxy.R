@@ -2,10 +2,7 @@
 no_proxy_ref <- paste(
   "192.168.1.1",
   "example.com",
-  "*.example1.com",
-  ".example2.com",
   "foo.example3.com",
-  "foo.*.example4.com",
   "localhost",
   sep = ","
 )
@@ -42,11 +39,14 @@ test_that("uses_proxy() works", {
   expect_uses_proxy("cnn.com", TRUE)
   expect_uses_proxy("192.168.1.1", FALSE)
   expect_uses_proxy("example.com", FALSE)
-  expect_uses_proxy("bar.example.com", TRUE)
-  expect_uses_proxy("bar.example1.com", FALSE)
-  expect_uses_proxy("foo.example3.com", FALSE)
-  expect_uses_proxy("foo.bar.example4.com", FALSE)
+  expect_uses_proxy("bar.example.com", FALSE)
   expect_uses_proxy("localhost", FALSE)
+
+  # empty string matches all (proxy always used)
+  expect_uses_proxy("cnn.com", TRUE, no_proxy = "")
+
+  # wildcard matches nothing (proxy never used)
+  expect_uses_proxy("cnn.com", FALSE, no_proxy = "*")
 
 })
 

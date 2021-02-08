@@ -2,10 +2,7 @@
 no_proxy <- paste(
   "192.168.1.1",
   "example.com",
-  "*.example1.com",
-  ".example2.com",
   "foo.example3.com",
-  "foo.*.example4.com",
   "localhost",
   sep = ","
 )
@@ -13,10 +10,7 @@ no_proxy <- paste(
 no_proxy_parsed <- c(
   "192.168.1.1",
   "example.com",
-  "*.example1.com",
-  ".example2.com",
   "foo.example3.com",
-  "foo.*.example4.com",
   "localhost"
 )
 
@@ -47,15 +41,13 @@ test_that("parse_items() works", {
 test_that("regex_no_proxy() works", {
 
   regex_ref <- c(
-    "^192\\.168\\.1\\.1$",
-    "^example\\.com$",
-    "^.*\\.example1\\.com$",
-    "^.*\\.example2\\.com$",
-    "^foo\\.example3\\.com$",
-    "^foo\\..*\\.example4\\.com$",
-    "^localhost$"
+    "192\\.168\\.1\\.1$",
+    "example\\.com$",
+    "foo\\.example3\\.com$",
+    "localhost$"
   )
 
   expect_identical(regex_no_proxy(no_proxy_parsed), regex_ref)
+  expect_identical(regex_no_proxy("*"), ".*$")
 
 })

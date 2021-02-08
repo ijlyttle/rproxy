@@ -10,11 +10,12 @@ uses_proxy(url, no_proxy = envvar_no_proxy())
 get_proxy(url, proxy = envvar_proxy(), no_proxy = envvar_no_proxy())
 }
 \arguments{
-\item{url}{\code{character}}
+\item{url}{\code{character} address for which to determine the proxy.}
 
-\item{no_proxy}{\code{character}}
+\item{no_proxy}{\code{character} comma-separated string containing hostnames
+where the proxy is not to be used.}
 
-\item{proxy}{\code{character}}
+\item{proxy}{\code{character} the proxy that would be used.}
 }
 \value{
 \describe{
@@ -23,7 +24,15 @@ get_proxy(url, proxy = envvar_proxy(), no_proxy = envvar_no_proxy())
 }
 }
 \description{
-Determine proxy
+Use these functions to determine if a \code{proxy} should be used for a given
+\code{url} and \code{no_proxy} string.
+}
+\details{
+This aims to emulate the
+\href{https://curl.se/libcurl/c/CURLOPT_NOPROXY.html}{cURL specification}
+for \code{NO_PROXY}. The biggest difference between this implementation and the
+cURL specification is that the wildcard character (\code{*}) is used more
+permissably here.
 }
 \examples{
   proxy <- "http://proxy.acme.com"

@@ -27,17 +27,14 @@ regex_no_proxy <- function(no_proxy_parsed) {
 
   regex <- no_proxy_parsed
 
-  # if it starts with a dot, prepend with wildcard (*.)
-  regex <- sub("^[.]", "*.", regex)
-
   # escape the existing dots: prepend all . with \\
   regex <- gsub("\\.", "\\\\.", regex)
 
   # where we see a wildcard (*), replace with (.*)
   regex <- gsub("\\*", ".*", regex)
 
-  # prepend/append with ^/$
-  regex <- paste0("^", regex, "$")
+  # append with $
+  regex <- paste0(regex, "$")
 
   regex
 }
