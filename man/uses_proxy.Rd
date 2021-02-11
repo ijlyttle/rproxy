@@ -20,7 +20,7 @@ where the proxy is not to be used.}
 \value{
 \describe{
 \item{\code{uses_proxy()}}{\code{logical} indicating if the proxy should be used.}
-\item{\code{get_proxy()}}{\code{character} value of proxy to use.}
+\item{\code{get_proxy()}}{\code{character} value of proxy to use, \code{NA} if no proxy.}
 }
 }
 \description{
@@ -32,7 +32,13 @@ This aims to emulate the
 \href{https://curl.se/libcurl/c/CURLOPT_NOPROXY.html}{cURL specification}
 for \code{NO_PROXY}. The biggest difference between this implementation and the
 cURL specification is that the wildcard character (\code{*}) is used more
-permissably here.
+permissibly here.
+
+Note that \code{get_proxy()} returns \code{NA} if the proxy should not be used;
+this is the value used to \strong{set} the proxy environment-variables. This is
+different from \code{\link[=envvar_proxy]{envvar_proxy()}}, which will return \code{""} for an unset
+environment-variable. This reflects the difference in syntax between
+between \code{\link[withr:with_envvar]{withr::with_envvar()}} and \code{\link[=Sys.getenv]{Sys.getenv()}}.
 }
 \examples{
   proxy <- "http://proxy.acme.com"

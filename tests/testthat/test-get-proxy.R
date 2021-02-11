@@ -54,7 +54,7 @@ test_that("get_proxy() works", {
 
   # non-character arguments
   expect_error(
-    get_proxy(url = "foo", proxy = 1, no_proxy = ""),
+    get_proxy(url = "foo", proxy = 1, no_proxy = NA_),
     "`proxy` must be character and scalar"
   )
 
@@ -72,6 +72,6 @@ test_that("get_proxy() works", {
   }
 
   expect_get_proxy("cnn.com", proxy_ref)
-  expect_get_proxy("192.168.1.1", "")
+  expect_get_proxy("192.168.1.1", NA_character_)
 
 })

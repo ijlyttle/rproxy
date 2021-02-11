@@ -22,6 +22,12 @@ environment variables:
 environment variables: \code{"no_proxy"}, \code{"NO_PROXY"}.}
 }
 }
+\details{
+Note that \code{envvar_proxy()} returns \code{""} for an unset environment-variable.
+This is different from \code{\link[=get_proxy]{get_proxy()}}, which will return \code{NA} if the proxy
+should not be used. This reflects the difference in syntax between
+between \code{\link[=Sys.getenv]{Sys.getenv()}} and \code{\link[withr:with_envvar]{withr::with_envvar()}} .
+}
 \examples{
   envvar_proxy()
   envvar_no_proxy()
