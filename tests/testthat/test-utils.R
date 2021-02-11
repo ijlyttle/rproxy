@@ -14,6 +14,13 @@ no_proxy_parsed <- c(
   "localhost"
 )
 
+test_that("%||% works", {
+
+  expect_identical("" %|.|% "foo", "foo")
+  expect_identical("bar" %|.|% "foo", "bar")
+
+})
+
 test_that("get_hostname() works", {
 
   # https

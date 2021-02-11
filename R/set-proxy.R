@@ -82,7 +82,7 @@ with_proxy_for_url <- function(url, code) {
 without_proxy <- function(code) {
 
   withr::with_envvar(
-    new = list_proxy(""),
+    new = list_proxy(NA_character_),
     code = code
   )
 

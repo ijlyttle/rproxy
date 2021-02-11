@@ -9,6 +9,12 @@
 #'     environment variables: `"no_proxy"`, `"NO_PROXY"`.}
 #'  }
 #'
+#'
+#' Note that `envvar_proxy()` returns `""` for an unset environment-variable.
+#' This is different from [get_proxy()], which will return `NA` if the proxy
+#' should not be used. This reflects the difference in syntax between
+#' between [Sys.getenv()] and [withr::with_envvar()] .
+#'
 #' @return `character` value of proxy or no_proxy environment-variable.
 #' @examples
 #'   envvar_proxy()
