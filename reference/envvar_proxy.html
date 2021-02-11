@@ -146,6 +146,12 @@ environment variables: <code>"no_proxy"</code>, <code>"NO_PROXY"</code>.</p></dd
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>character</code> value of proxy or no_proxy environment-variable.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Note that <code>envvar_proxy()</code> returns <code>""</code> for an unset environment-variable.
+This is different from <code><a href='uses_proxy.html'>get_proxy()</a></code>, which will return <code>NA</code> if the proxy
+should not be used. This reflects the difference in syntax between
+between <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv()</a></code> and <code><a href='https://withr.r-lib.org/reference/with_envvar.html'>withr::with_envvar()</a></code> .</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='fu'>envvar_proxy</span><span class='op'>(</span><span class='op'>)</span>

@@ -149,7 +149,7 @@ where the proxy is not to be used.</p></td>
     
 <dl>
 <dt><code>uses_proxy()</code></dt><dd><p><code>logical</code> indicating if the proxy should be used.</p></dd>
-<dt><code>get_proxy()</code></dt><dd><p><code>character</code> value of proxy to use.</p></dd>
+<dt><code>get_proxy()</code></dt><dd><p><code>character</code> value of proxy to use, <code>NA</code> if no proxy.</p></dd>
 
 </dl>
 
@@ -159,7 +159,12 @@ where the proxy is not to be used.</p></td>
 <a href='https://curl.se/libcurl/c/CURLOPT_NOPROXY.html'>cURL specification</a>
 for <code>NO_PROXY</code>. The biggest difference between this implementation and the
 cURL specification is that the wildcard character (<code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code>) is used more
-permissably here.</p>
+permissibly here.</p>
+<p>Note that <code>get_proxy()</code> returns <code>NA</code> if the proxy should not be used;
+this is the value used to <strong>set</strong> the proxy environment-variables. This is
+different from <code><a href='envvar_proxy.html'>envvar_proxy()</a></code>, which will return <code>""</code> for an unset
+environment-variable. This reflects the difference in syntax between
+between <code><a href='https://withr.r-lib.org/reference/with_envvar.html'>withr::with_envvar()</a></code> and <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='va'>proxy</span> <span class='op'>&lt;-</span> <span class='st'>"http://proxy.acme.com"</span>
@@ -170,7 +175,7 @@ permissably here.</p>
 </div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
   <span class='fu'>get_proxy</span><span class='op'>(</span><span class='st'>"https://github.com"</span>, <span class='va'>proxy</span>, <span class='va'>no_proxy</span><span class='op'>)</span> <span class='co'># "http://proxy.acme.com"</span>
 </div><div class='output co'>#&gt; [1] "http://proxy.acme.com"</div><div class='input'>  <span class='fu'>get_proxy</span><span class='op'>(</span><span class='st'>"https://github.acme.com"</span>, <span class='va'>proxy</span>, <span class='va'>no_proxy</span><span class='op'>)</span> <span class='co'># ""</span>
-</div><div class='output co'>#&gt; [1] ""</div></pre>
+</div><div class='output co'>#&gt; [1] NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
